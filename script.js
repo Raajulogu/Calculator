@@ -39,12 +39,16 @@ dis.append(ans1);
  function pres(){
     var ans1=ele("class","ans1");
     if((this.id=="+"||this.id=="-"||this.id=="X"||this.id=="÷") && out==""){
-        out+="";
+        out+=0;
         ans1.innerHTML=out;
         dis.append(ans1);
     }
     else if(this.id=="+"){
-        out+="+";
+        if(out[out.length-1]=="+"||out[out.length-1]=="-"||out[out.length-1]=="x"||out[out.length-1]=="÷"){
+
+        }
+        else{
+            out+="+";
         ans1.innerHTML=out;
         dis.append(ans1);
         var temp=[];
@@ -59,9 +63,14 @@ dis.append(ans1);
         var arr1=temp.join("");
         arr.push(arr1);
         arr.push(this.id);
+        }
     }
     else if(this.id=="-"){
-        out+="-";
+        if(out[out.length-1]=="+"||out[out.length-1]=="-"||out[out.length-1]=="x"||out[out.length-1]=="÷"){
+
+        }
+        else{
+            out+="-";
         ans1.innerHTML=out;
         dis.append(ans1);
         var temp=[];
@@ -76,9 +85,14 @@ dis.append(ans1);
         var arr1=temp.join("");
         arr.push(arr1);
         arr.push(this.id);
+        }
     }
     else if(this.id=="x"){
-        out+="x";
+        if(out[out.length-1]=="+"||out[out.length-1]=="-"||out[out.length-1]=="x"||out[out.length-1]=="÷"){
+
+        }
+        else{
+            out+="x";
         ans1.innerHTML=out;
         dis.append(ans1);
         var temp=[];
@@ -93,9 +107,14 @@ dis.append(ans1);
         var arr1=temp.join("");
         arr.push(arr1);
         arr.push(this.id);
+        }
     }
     else if(this.id=="÷"){
-        out+="÷";
+        if(out[out.length-1]=="+"||out[out.length-1]=="-"||out[out.length-1]=="x"||out[out.length-1]=="÷"){
+
+        }
+        else{
+            out+="÷";
         ans1.innerHTML=out;
         dis.append(ans1);
         var temp=[];
@@ -110,6 +129,7 @@ dis.append(ans1);
         var arr1=temp.join("");
         arr.push(arr1);
         arr.push(this.id);
+        }
     }
     else{
         var but=this.id;
@@ -137,13 +157,12 @@ dis.append(ans1);
             }
             else{
                 temp.splice(0,0,out[k]);
-                console.log(temp)
             }
         }
         var arr1=temp.join("");
-        console.log(arr1)
         var d=arr.length;
         arr.splice(d,0,arr1);
+        console.log(arr);
         var sout=parseFloat(arr[0]);
         for(var j=1;j<arr.length;j++){
             if(arr[j]=="+"){
@@ -159,6 +178,8 @@ dis.append(ans1);
                 sout/=parseFloat(arr[j+1]);
             }
         }
+        out=""
+        arr=[];
         ans2.innerHTML=sout;
         ans.append(ans2);
 }
